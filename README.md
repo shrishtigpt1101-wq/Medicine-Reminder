@@ -1,63 +1,93 @@
-# Medicine-Reminder
+# Medicine Reminder
 
-Medicine reminder system with a C++ backend, SQLite database, and web/console interfaces.
+A local medicine reminder system built with C++, SQLite, and a lightweight web interface.
 
-## Main Topic
+## Package and App Info
 
-The Medicine Reminder app helps users manage medicine schedules on a local system.  
-Users can add medicines, set repeat rules, and track medicine history through a web UI and console app.
+- App name: `Medicine Reminder`
+- Repository: `Medicine-Reminder`
+- App type: local desktop/web project
+- Build output: native executables (`mR.exe`, `web_server.exe`)
+- Package manager: not used in this project
 
-## About This Project
+## Requirements (What You Need)
 
-This project is a desktop/web-style implementation of the Medicine Reminder idea:
+- Windows 10/11 (web server uses WinSock)
+- MinGW-w64 tools (`gcc`, `g++`) with C++17 support
+- Python 3 (optional, only for `view_db.py`)
+- Any modern browser
 
-- Account system with password hashing
-- Medicine scheduling with repeat rules (every day, selected days, every X days, and interval-based units)
-- Reminder engine using `next_due_at` with repeat calculations in C++ backend
+## Tech Stack
+
+- C++17 (`mR.cpp`, `web_server.cpp`, `Database.cpp`)
+- SQLite (`sqlite3.c`, `sqlite3.h`, `medicine_reminder.db`)
+- HTML/CSS frontend pages (`*.html`, `*.css`)
+- Python utility script (`view_db.py`)
+
+## What Is Implemented
+
+- Account signup and login
+- Password hashing in backend account flow
+- Add medicine with dosage, date, time, repeat, and duration options
+- Reminder scheduling using `next_due_at` with repeat rules
 - Missed-reminder catch-up after server restart
-- Profile management with profile photo upload support
-- Console app (`mR.cpp`) and browser UI (`web_server.cpp` + HTML/CSS)
+- Medicine history actions (mark taken, delete)
+- User profile update
+- Profile photo upload and display (`jpg`, `jpeg`, `png`, `webp`, max 2 MB)
+- Account-specific reminder filtering in server runtime
 
-## Features
+## Build and Test (CLI)
 
-- Signup and login system for user accounts
-- Add medicines with dosage and schedule details
-- Repeat reminders for daily, selected-day, every-X-day, and interval-based patterns
-- Missed reminder handling when server restarts after downtime
-- Profile photo upload and display in user profile
+Build commands from project root:
 
-## How It Works
+```powershell
+gcc -c sqlite3.c -o sqlite3.o
+g++ -std=c++17 mR.cpp Database.cpp sqlite3.o -o mR.exe
+g++ -std=c++17 web_server.cpp Database.cpp sqlite3.o -lws2_32 -o web_server.exe
+```
 
-- Each reminder stores an absolute next trigger time in `next_due_at`
-- Repeat interval is stored as `repeat_minutes` and schedule rule fields (`repeat_mode`, `repeat_every_x_days`, `selected_days`)
-- Reminder loop checks due rows where `next_due_at <= now`
-- After triggering, it advances to the next due time based on repeat rules
-- If server is offline, catch-up logic calculates missed intervals on restart and moves to the correct next due time
+Test status:
 
-## Usage Flow
+- No automated test suite is present in this repository.
+- Current testing is manual (run app flows and validate behavior).
 
-1. Create account and login.
-2. Add medicine with name, dosage, date, time, and repeat settings.
-3. View saved medicines on the history page and keep the server running to process reminders.
-4. Check reminder messages in backend/server output (terminal).
+## How To Run
 
-## Future Improvements
+Web app:
 
-- Browser reminder page for due/upcoming reminders without JavaScript
-- Reminder actions like Snooze and Mark Taken directly from reminder list
-- Session timeout and stronger cookie security flags
-- Backup/restore option for local SQLite database
-- Unit tests for repeat and duration reminder rules
+```powershell
+.\web_server.exe
+```
 
-## Languages and Technologies Used
+Open:
 
-- C++: core backend (`web_server.cpp`), database layer (`Database.cpp`), and console app (`mR.cpp`)
-- SQLite: local database storage (`medicine_reminder.db`) via `sqlite3.c` / `sqlite3.h`
-- HTML: frontend pages (`login.html`, `add-medicine.html`, `user-profile.html`, etc.)
-- CSS: frontend styling (`common.css`, `style.css`, and page-specific CSS files)
-- Python: utility script (`view_db.py`) for viewing DB tables
+- `http://localhost:8080/login.html`
 
-## Notes
+Console app:
 
-- Main reminder logic is implemented in C++ backend files (`web_server.cpp` + `Database.cpp`).
-- Frontend currently runs without JavaScript-based reminder polling popups.
+```powershell
+.\mR.exe
+```
+
+Optional DB view:
+
+```powershell
+python view_db.py
+```
+
+## Project Structure
+
+- `web_server.cpp`: HTTP server, routes, session handling, reminder loop
+- `Database.cpp` / `Database.h`: SQLite schema, auth, user, medicine, reminder DB logic
+- `mR.cpp`: console-based application workflow
+- `Models.h`: `Medicine` and `User` model definitions
+- `sqlite3.c` / `sqlite3.h`: embedded SQLite source
+- `uploads/profile/`: uploaded profile photos
+- `medicine_reminder.db`: local SQLite database
+
+## Project Architecture
+
+- Presentation layer: server-rendered HTML/CSS pages and console UI
+- Application layer: C++ logic in `web_server.cpp` and `mR.cpp`
+- Data access layer: `Database.cpp` / `Database.h`
+- Storage layer: SQLite DB file + local uploads folder
