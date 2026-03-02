@@ -1,0 +1,43 @@
+/* ===== Dashboard Page ===== */
+
+/* Cards Grid */
+.cards-container {
+    max-width: var(--max-width-content);
+    margin: var(--space-xl) auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    padding: 0 var(--space-md);
+}
+
+/* Dashboard Cards */
+.dash-card {
+    padding: var(--space-xl);
+    text-align: center;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--text-accent);
+    text-decoration: none;
+}
+
+.dash-card:hover {
+    color: var(--color-primary-dark);
+}
+
+.dash-card h2 {
+    font-size: var(--font-size-lg);
+    color: inherit;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: var(--space-md);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+footer a {
+    color: var(--color-danger);
+    font-weight: 600;
+}

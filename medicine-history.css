@@ -1,0 +1,54 @@
+/* ===== Medicine History Page ===== */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+    max-width: var(--max-width-content);
+    margin: var(--space-xl) auto;
+    padding: 0 var(--space-md);
+    padding-bottom: 5rem; /* space for fixed bottom nav */
+}
+
+.center-note {
+    text-align: center;
+}
+
+/* Medicine Cards */
+#historyContainer .card h3 {
+    color: var(--text-accent);
+    margin-bottom: var(--space-sm);
+}
+
+#historyContainer .card p {
+    color: var(--color-primary);
+    margin: var(--space-xs) 0;
+}
+
+/* Action buttons in cards */
+#historyContainer .card form {
+    display: inline-block;
+    margin-top: var(--space-sm);
+    margin-right: var(--space-sm);
+}
+
+.settings-btn {
+    background-color: var(--color-primary);
+    border: none;
+    color: var(--text-on-primary);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-xl);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.settings-btn:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--text-on-primary);
+    transform: scale(1.05);
+}

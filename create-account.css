@@ -1,0 +1,64 @@
+/* ===== Create Account Page ===== */
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.page .card {
+    width: 380px;
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-pink);
+    text-align: center;
+}
+
+.page .card:hover {
+    transform: none;
+}
+
+.page .card h1 {
+    color: var(--color-accent);
+    margin-bottom: var(--space-xs);
+    font-size: var(--font-size-xl);
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.page form {
+    text-align: left;
+}
+
+.page form button {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    border: none;
+    border-radius: var(--radius-xl);
+    color: var(--text-on-primary);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform var(--transition-normal);
+    margin-top: var(--space-sm);
+}
+
+.page form button:hover {
+    transform: scale(1.03);
+}
+
+.login-text {
+    margin-top: var(--space-md);
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.login-text a {
+    color: var(--color-accent);
+    font-weight: 600;
+}

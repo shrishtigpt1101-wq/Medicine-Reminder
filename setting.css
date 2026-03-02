@@ -1,0 +1,68 @@
+/* ===== Settings Page ===== */
+
+main {
+    padding: var(--space-md);
+}
+
+main .card {
+    max-width: var(--max-width-card);
+    margin: var(--space-md) auto;
+    padding: var(--space-lg);
+}
+
+main .card h2 {
+    margin-bottom: var(--space-md);
+}
+
+/* Toggle switch */
+.horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.switch {
+    position: relative;
+    width: 46px;
+    height: 22px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    background: #ccc;
+    border-radius: 22px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 2px;
+    bottom: 2px;
+    background: white;
+    border-radius: var(--radius-full);
+    transition: var(--transition-normal);
+}
+
+.switch input:checked + .slider {
+    background: var(--color-primary);
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(24px);
+}
+
+footer {
+    text-align: center;
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--space-md);
+    color: var(--text-muted);
+}

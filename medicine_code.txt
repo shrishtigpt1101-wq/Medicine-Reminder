@@ -1,0 +1,254 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+// ================= Medicine Class =================
+class Medicine {
+private:
+    string name;
+    string dosage;
+    string time;
+    bool taken;
+
+public:
+    Medicine(string n, string d, string t) {
+        name = n;
+        dosage = d;
+        time = t;
+        taken = false;
+    }
+
+    void markTaken() { taken = true; }
+
+    void display(int index) const {
+        cout << index + 1 << ". " << left << setw(15) << name 
+             << " | Dosage: " << setw(10) << dosage 
+             << " | Time: " << setw(8) << time 
+             << " | Status: " << (taken ? "Taken" : "Pending") << endl;
+    }
+};
+
+// ================= User Class =================
+class User {
+public:
+    string name;
+    int age;
+    string gender;
+    string medicalIssue;
+    string contactNumber;
+    string emergencyContact;
+
+    void inputDetails() {
+        cout << "\n--- Enter User Details ---\n";
+
+        cout << "Enter Full Name: ";
+        getline(cin, name);
+
+        cout << "Enter Age: ";
+        cin >> age;
+        cin.ignore();
+
+        cout << "Enter Gender: ";
+        getline(cin, gender);
+
+        cout << "Enter Medical Issue (press enter to skip): ";
+        getline(cin, medicalIssue);
+
+        cout << "Enter Contact Number: ";
+        getline(cin, contactNumber);
+
+        cout << "Enter Emergency Contact Number (press enter to skip): ";
+        getline(cin, emergencyContact); // optional
+    }
+};
+
+// ================= Account Class =================
+class Account {
+private:
+    string username;
+    string password;
+
+public:
+    void createAccount() {
+        cout << "\n--- Create Account ---\n";
+        cout << "Set Username: ";
+        getline(cin, username);
+
+        cout << "Set Password: ";
+        getline(cin, password);
+
+        cout << "✅ Account created successfully!\n";
+    }
+
+    bool login() {
+        string u, p;
+        cout << "\n===== LOGIN =====\n";
+        cout << "Username: ";
+        getline(cin, u);
+        cout << "Password: ";
+        getline(cin, p);
+
+        if (u == username && p == password) {
+            cout << "\n✅ Login Successful!\n";
+            return true;
+        } else {
+            cout << "\n❌ Invalid username or password!\n";
+            return false;
+        }
+    }
+
+    void changePassword() {
+        string oldPass, newPass;
+        cout << "\nEnter old password: ";
+        getline(cin, oldPass);
+
+        if (oldPass == password) {
+            cout << "Enter new password: ";
+            getline(cin, newPass);
+            password = newPass;
+            cout << "✅ Password changed successfully!\n";
+        } else {
+            cout << "❌ Wrong old password!\n";
+        }
+    }
+
+    void changeUsername() {
+        cout << "\nEnter new username: ";
+        getline(cin, username);
+        cout << "✅ Username updated!\n";
+    }
+
+    string getUsername() const { return username; }
+    string getMaskedPassword() const { return string(password.length(), '*'); }
+};
+
+// ================= App Class =================
+class MedicineReminderApp {
+private:
+    User user;
+    Account account;
+    vector<Medicine> medicines;
+
+public:
+    void start() {
+        account.createAccount(); // first username/password
+        user.inputDetails();     // then personal info
+
+        if (!account.login()) return;
+
+        int choice;
+        do {
+            cout << "\n===== MENU =====\n";
+            cout << "1. View Profile\n";
+            cout << "2. Change Username\n";
+            cout << "3. Change Password\n";
+            cout << "4. Add Medicine\n";
+            cout << "5. Show Medicines\n";
+            cout << "6. Take Medicine\n";
+            cout << "7. Exit\n";
+            cout << "Enter choice: ";
+            cin >> choice;
+            cin.ignore();
+
+            switch (choice) {
+                case 1: displayProfile(); break;
+                case 2: account.changeUsername(); break;
+                case 3: account.changePassword(); break;
+                case 4: addMedicine(); break;
+                case 5: showMedicines(); break;
+                case 6: takeMedicine(); break;
+                case 7: cout << "\n👋 Goodbye!\n"; break;
+                default: cout << "\n❌ Invalid choice\n";
+            }
+        } while (choice != 7);
+    }
+
+    void displayProfile() const {
+        cout << "\n========================================\n";
+        cout << setw(25) << "USER PROFILE" << endl;
+        cout << "========================================\n";
+
+        cout << left;
+        cout << setw(20) << "Username" << ": " << account.getUsername() << endl;
+        cout << setw(20) << "Password" << ": " << account.getMaskedPassword() << endl;
+        cout << setw(20) << "Name" << ": " << user.name << endl;
+        cout << setw(20) << "Age" << ": " << user.age << endl;
+        cout << setw(20) << "Gender" << ": " << user.gender << endl;
+
+        cout << setw(20) << "Medical Issue" << ": ";
+        if (user.medicalIssue.empty()) cout << "None" << endl;
+        else cout << user.medicalIssue << endl;
+
+        cout << setw(20) << "Contact Number" << ": " << user.contactNumber << endl;
+        cout << setw(20) << "Emergency Contact" << ": ";
+        if (user.emergencyContact.empty()) cout << "None" << endl;
+        else cout << user.emergencyContact << endl;
+
+        cout << "========================================\n";
+    }
+
+    void addMedicine() {
+        string name, dosage, ampm;
+        int hour;
+
+        cout << "\nEnter Medicine Name: ";
+        getline(cin, name);
+
+        cout << "Enter Dosage (e.g. 1 tablet): ";
+        getline(cin, dosage);
+
+        cout << "Enter Hour (1-12): ";
+        cin >> hour;
+        cin.ignore();
+
+        cout << "Enter AM or PM: ";
+        getline(cin, ampm);
+
+        string time = to_string(hour) + " " + ampm;
+        medicines.push_back(Medicine(name, dosage, time));
+
+        cout << "\n✅ Medicine added successfully!\n";
+    }
+
+    void showMedicines() const {
+        if (medicines.empty()) {
+            cout << "\n❌ No medicines added yet.\n";
+            return;
+        }
+
+        cout << "\n📋 Medicine List:\n";
+        for (int i = 0; i < medicines.size(); i++) {
+            medicines[i].display(i);
+        }
+    }
+
+    void takeMedicine() {
+        if (medicines.empty()) {
+            cout << "\n❌ No medicines available.\n";
+            return;
+        }
+
+        int choice;
+        showMedicines();
+
+        cout << "\nEnter medicine number to mark as taken: ";
+        cin >> choice;
+        cin.ignore();
+
+        if (choice < 1 || choice > medicines.size()) {
+            cout << "\n❌ Invalid choice!\n";
+        } else {
+            medicines[choice - 1].markTaken();
+            cout << "\n✅ Medicine marked as taken.\n";
+        }
+    }
+};
+
+// ================= Main =================
+int main() {
+    MedicineReminderApp app;
+    app.start();
+    return 0;
+}

@@ -1,0 +1,58 @@
+Use this short demo flow in front of your invigilator.
+-------------------------------------------------------
+
+Say this first:
+This is a C++ OOP medicine reminder app with SQLite database. Data is stored permanently in medicine_reminder.db.
+---------------------------------------------------------------------------
+
+Show project structure:
+
+Models.h -> Medicine, User classes
+Database.h + Database.cpp -> all DB operations
+mR.cpp -> menu/app flow
+view_db.py -> tabular DB viewer
+---------------------------------------------------------------------------
+
+Build and run:
+
+gcc -c sqlite3.c -o sqlite3.o
+g++ -std=c++17 mR.cpp Database.cpp sqlite3.o -o mR.exe
+mR.exe
+
+---------------------------------------------------------------------------
+
+Inside app, do this live:
+
+Create Account
+Enter profile
+Add medicine
+Show medicines
+Mark medicine as taken
+Exit
+---------------------------------------------------------------------------
+
+Prove DB is storing data (tabular):
+
+python view_db.py
+Show tables: accounts, users, medicines.
+---------------------------------------------------------------------------
+
+Prove persistence:
+
+	Run mR.exe again
+	Choose Login with same username/password
+	Show old profile/medicine still exists
+---------------------------------------------------------------------------
+
+If asked “how it works internally”, say:
+
+Menu calls functions in mR.cpp, those call Database.cpp methods, and Database.cpp runs SQL on medicine_reminder.db.
+---------------------------------------------------------------------------
+
+I’ll check whether mR.exe is currently locked, read-only, or still running.
+If this happens again, run:
+
+taskkill /IM mR.exe /F
+g++ -std=c++17 mR.cpp Database.cpp sqlite3.o -o mR.exe
+mR.exe
+---------------------------------------------------------------------------

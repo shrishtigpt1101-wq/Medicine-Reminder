@@ -1,0 +1,36 @@
+<!-- create-account.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account</title>
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="create-account.css">
+</head>
+<body>
+
+<div class="page">
+    <div class="card">
+        <h1>Create Account</h1>
+        <p class="subtitle">Join your medicine reminder</p>
+
+        <form method="post" action="/signup">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Choose a username" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Choose a password" required>
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <p class="login-text">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!-- add-medicine.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Medicine</title>
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="add-medicine.css">
+</head>
+<body>
+
+<header class="app-header">
+    <h1>Add Medicine</h1>
+    <p>Set your medicine reminder</p>
+</header>
+
+<main>
+    <section class="card">
+        <form method="post" action="/add-medicine">
+            <div class="field">
+                <label for="medicine-name">Name:</label>
+                <input id="medicine-name" type="text" name="name" placeholder="Enter medicine name" required>
+            </div>
+
+            <div class="field">
+                <label for="medicine-dosage">Dosage:</label>
+                <input id="medicine-dosage" type="text" name="dosage" placeholder="1 tablet / 5 ml" required>
+            </div>
+
+            <div class="field">
+                <label for="medicine-time">Time (24-hour):</label>
+                <input id="medicine-time" type="time" name="time_24h" required>
+            </div>
+
+            <div class="field">
+                <label for="start-date">Start Date:</label>
+                <input id="start-date" type="date" name="start_date" required>
+            </div>
+
+            <div class="field">
+                <label for="enable-reminder">Reminder:</label>
+                <select id="enable-reminder" name="enable_reminder" required>
+                    <option value="on" selected>On</option>
+                    <option value="off">Off</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="repeat-mode">Repeat:</label>
+                <select id="repeat-mode" name="repeat" required>
+                    <option value="every_day" selected>Every Day</option>
+                    <option value="selected_days">Selected Days</option>
+                    <option value="every_x_days">Every X Days</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="selected-days">Selected Days:</label>
+                <input id="selected-days"
+                       type="text"
+                       name="selected_days"
+                       placeholder="mon,wed,fri (use only for Selected Days mode)">
+            </div>
+
+            <div class="field">
+                <label for="repeat-every-x-days">Every X Days:</label>
+                <input id="repeat-every-x-days" type="number" name="repeat_every_x_days" min="1" value="2">
+            </div>
+
+            <div class="field">
+                <label for="duration-type">Duration:</label>
+                <select id="duration-type" name="duration_type" required>
+                    <option value="continuous" selected>Continuous</option>
+                    <option value="number_of_days">Number of Days</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="duration-days">Duration Days:</label>
+                <input id="duration-days" type="number" name="duration_days" min="1" value="7">
+            </div>
+
+            <div class="center-actions">
+                <button class="btn btn-primary" type="submit">Save Medicine</button>
+            </div>
+        </form>
+    </section>
+
+    <div class="center-actions">
+        <a class="btn btn-secondary" href="dashboard.html">Back to Dashboard</a>
+        <a class="btn btn-primary" href="medicine-history.html">Medicine History</a>
+    </div>
+</main>
+
+</body>
+</html>

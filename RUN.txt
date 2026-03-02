@@ -1,0 +1,22 @@
+Run:
+-----
+Console app:
+mR.exe
+
+Frontend + backend (no JS):
+web_server.exe
+
+Open:
+http://localhost:8080/login.html
+
+To view DB tables in tabular form:
+python view_db.py
+
+
+
+
+gcc -c sqlite3.c -o sqlite3.o
+g++ -std=c++17 web_server.cpp Database.cpp sqlite3.o -lws2_32 -o web_server.exe
+web_server.exe
+
+

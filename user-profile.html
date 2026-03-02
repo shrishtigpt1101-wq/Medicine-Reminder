@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top-nav">
+    <a href="/dashboard.html">Dashboard</a>
+    <a href="/settings.html">Settings</a>
+</header>
+
+<main>
+    <h1 class="page-title">User Profile</h1>
+
+    <section class="card center">
+        <h2>Profile Picture</h2>
+        <div class="profile-circle">
+            <div class="cute-avatar">U</div>
+        </div>
+        <p>Profile editing is available in the console app (<code>mR.exe</code>).</p>
+    </section>
+
+    <section class="card">
+        <label for="profile-name">Name</label>
+        <input id="profile-name" type="text" placeholder="Saved from console app" disabled>
+
+        <label for="profile-age">Age</label>
+        <input id="profile-age" type="number" placeholder="Saved from console app" disabled>
+
+        <label for="profile-gender">Gender</label>
+        <input id="profile-gender" type="text" placeholder="Saved from console app" disabled>
+
+        <label for="profile-medical">Medical Condition</label>
+        <input id="profile-medical" type="text" placeholder="Saved from console app" disabled>
+
+        <label for="profile-contact">Contact Number</label>
+        <input id="profile-contact" type="text" placeholder="Saved from console app" disabled>
+
+        <label for="profile-emergency">Emergency Contact</label>
+        <input id="profile-emergency" type="text" placeholder="Saved from console app" disabled>
+    </section>
+
+    <section class="card center">
+        <a class="logout-btn" href="/logout">Logout</a>
+    </section>
+</main>
+
+</body>
+</html>

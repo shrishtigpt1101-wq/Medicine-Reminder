@@ -1,0 +1,13 @@
+📁 Your Project File Mapping
+
+| Page                | HTML File               | CSS File               |
+| ------------------- | ----------------------- | ---------------------- |
+| 🔐 Login            | `login.html`            | `login.css`            |
+| 📝 Create Account   | `create-account.html`   | `create-account.css`   |
+| 🏠 Dashboard        | `dashboard.html`        | `dashboard.css`        |
+| 📋 Medicine History | `medicine_history.html` | `medicine_history.css` |
+| ➕ Add Medicine     | `add-medicine.html`     | `add-medicine.css`     |
+| ⚙️ Settings         | `setting.html`          | `setting.css`          |
+| 👤 User Profile     | `user-profile.html`     | `style.css`            |
+
+

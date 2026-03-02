@@ -1,0 +1,43 @@
+/* ===== Add Medicine Page ===== */
+
+main {
+    max-width: var(--max-width-content);
+    margin: var(--space-xl) auto;
+    padding: 0 var(--space-md);
+}
+
+.card form {
+    padding: var(--space-sm) 0;
+}
+
+/* Field row layout */
+.field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+}
+
+.field label {
+    font-weight: 600;
+    color: var(--color-primary);
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.field input,
+.field select {
+    flex: 2;
+    margin-bottom: 0;
+    color: var(--color-primary);
+}
+
+/* Action buttons */
+.center-actions {
+    text-align: center;
+    margin-top: var(--space-md);
+}
+
+.center-actions .btn {
+    margin: var(--space-xs);
+}
