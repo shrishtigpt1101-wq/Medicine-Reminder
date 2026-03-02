@@ -41,6 +41,14 @@ This project is a desktop/web-style implementation of the Medicine Reminder idea
 3. View saved medicines on the history page and keep the server running to process reminders.
 4. Check reminder messages in backend/server output (terminal).
 
+## Future Improvements
+
+- Browser reminder page for due/upcoming reminders without JavaScript
+- Reminder actions like Snooze and Mark Taken directly from reminder list
+- Session timeout and stronger cookie security flags
+- Backup/restore option for local SQLite database
+- Unit tests for repeat and duration reminder rules
+
 ## Languages and Technologies Used
 
 - C++: core backend (`web_server.cpp`), database layer (`Database.cpp`), and console app (`mR.cpp`)
