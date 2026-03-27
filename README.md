@@ -1,6 +1,14 @@
-# Medicine Reminder
+💊 Medicine Reminder
 
-A local medicine reminder system built with C++, SQLite, and a lightweight web interface.
+A lightweight, offline-first medicine reminder system built using C++ and SQLite, featuring a custom HTTP server and web-based user interface for efficient medication tracking and scheduling.
+
+🚀 About the Project
+
+Medicine Reminder is a system-level application designed to provide reliable medication tracking without dependency on external services. It combines a custom-built HTTP server (using WinSock) with a local SQLite database to deliver a secure and efficient reminder system.
+
+The application supports both a console-based interface and a browser-accessible web interface, enabling users to manage medicines, schedules, and profiles seamlessly. Reminder scheduling is implemented using time-based logic with support for recurring doses and automatic recovery of missed reminders after system restarts.
+
+The system ensures data privacy by operating entirely on local storage, while also incorporating secure authentication mechanisms such as password hashing and session handling.
 
 ## Package and App Info
 
